@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Millo Marketplace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation (same as index.html) -->
+    <header class="glass-effect">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-2xl font-display gradient-gold">Millo</a>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="products.html" class="nav-link">Products</a>
+                        <a href="sellers.html" class="nav-link">Become a Seller</a>
+                        <a href="about.html" class="nav-link">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="nav-link relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </a>
+                    <button onclick="openAuthModal()" class="btn btn-compact">Login</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="py-20 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl font-display gradient-gold mb-4">Our Products</h1>
+            <p class="text-xl text-gray-400">Discover premium products from trusted sellers</p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="py-8 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap gap-4 items-center justify-between">
+                <div class="flex gap-4 flex-wrap">
+                    <select class="input-field w-auto">
+                        <option>All Categories</option>
+                        <option>Electronics</option>
+                        <option>Fashion</option>
+                        <option>Home & Living</option>
+                        <option>Accessories</option>
+                    </select>
+                    <select class="input-field w-auto">
+                        <option>Sort by: Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest First</option>
+                    </select>
+                </div>
+                <div class="flex-1 max-w-md">
+                    <input type="search" id="search-input" class="input-field" placeholder="Search products...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Luxury+Watch" alt="Luxury Watch" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <span class="badge badge-success absolute top-2 right-2">New</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Luxury Watch</h3>
+                    <p class="text-gray-400 mb-4">Premium timepiece with elegant design</p>
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-400 ml-2">(128 reviews)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-yellow-500">$599.99</span>
+                        <button class="btn btn-compact" onclick="milloApp.addToCart(1)">
+                            <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="card">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Designer+Bag" alt="Designer Bag" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <span class="badge badge-danger absolute top-2 right-2">Sale</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Designer Handbag</h3>
+                    <p class="text-gray-400 mb-4">Handcrafted leather luxury bag</p>
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-400 ml-2">(256 reviews)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-2xl font-bold text-yellow-500">$899.99</span>
+                            <span class="text-gray-500 line-through ml-2">$1,199.99</span>
+                        </div>
+                        <button class="btn btn-compact" onclick="milloApp.addToCart(2)">
+                            <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Premium+Headphones" alt="Headphones" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Premium Headphones</h3>
+                    <p class="text-gray-400 mb-4">High-fidelity audio experience</p>
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-400 ml-2">(89 reviews)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-yellow-500">$349.99</span>
+                        <button class="btn btn-compact" onclick="milloApp.addToCart(3)">
+                            <i class="fas fa-cart-plus mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- More products would be dynamically loaded here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-12 space-x-2">
+                <button class="btn btn-compact">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="btn btn-compact">1</button>
+                <button class="btn btn-secondary btn-compact">2</button>
+                <button class="btn btn-secondary btn-compact">3</button>
+                <button class="btn btn-compact">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-display gradient-gold mb-4">Millo</h3>
+                    <p class="text-gray-400">Your premium marketplace for exceptional products.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="products.html" class="text-gray-400 hover:text-yellow-500">Products</a></li>
+                        <li><a href="sellers.html" class="text-gray-400 hover:text-yellow-500">Become a Seller</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-yellow-500">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="terms.html" class="text-gray-400 hover:text-yellow-500">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-yellow-500">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-facebook-f text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-instagram text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Millo Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9a4234f61ad539fd","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.9.1","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>

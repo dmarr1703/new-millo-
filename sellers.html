@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Seller - Millo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="glass-effect">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="text-2xl font-display gradient-gold">Millo</a>
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="nav-link">Back to Home</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl md:text-6xl font-display gradient-gold mb-6">Start Selling on Millo</h1>
+            <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                Join our premium marketplace and reach customers worldwide. Simple pricing: $25 CAD/month per product + 15% commission on sales.
+            </p>
+        </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="py-12 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-display gradient-gold text-center mb-12">Why Sell on Millo?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <i class="fas fa-dollar-sign text-5xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Simple Pricing</h3>
+                    <p class="text-gray-400">$25 CAD/month per product listing. No hidden fees. Cancel anytime.</p>
+                </div>
+                <div class="card text-center">
+                    <i class="fas fa-users text-5xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Premium Audience</h3>
+                    <p class="text-gray-400">Access to quality buyers looking for exceptional products.</p>
+                </div>
+                <div class="card text-center">
+                    <i class="fas fa-chart-line text-5xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-4">Growth Tools</h3>
+                    <p class="text-gray-400">Analytics, marketing tools, and seller support to help you succeed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="max-w-2xl mx-auto">
+                <div class="card">
+                    <h2 class="text-3xl font-display gradient-gold mb-8 text-center">Seller Registration</h2>
+                    
+                    <form id="seller-form" class="space-y-6">
+                        <!-- Personal Information -->
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">Personal Information</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block mb-2">First Name *</label>
+                                    <input type="text" class="input-field" required>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Last Name *</label>
+                                    <input type="text" class="input-field" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block mb-2">Email *</label>
+                                    <input type="email" class="input-field" required>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Phone Number *</label>
+                                    <input type="tel" class="input-field" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Business Information -->
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">Business Information</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block mb-2">Business/Store Name *</label>
+                                    <input type="text" class="input-field" required>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Business Type *</label>
+                                    <select class="input-field" required>
+                                        <option value="">Select...</option>
+                                        <option>Individual/Sole Proprietor</option>
+                                        <option>Partnership</option>
+                                        <option>Corporation</option>
+                                        <option>LLC</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Business Registration Number (if applicable)</label>
+                                    <input type="text" class="input-field">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Product Categories -->
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">Product Categories</h3>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Electronics</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Fashion & Accessories</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Home & Living</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Beauty & Personal Care</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-2">
+                                    <span>Sports & Outdoors</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Password -->
+                        <div>
+                            <h3 class="text-xl font-bold mb-4">Account Security</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block mb-2">Password *</label>
+                                    <input type="password" class="input-field" required>
+                                </div>
+                                <div>
+                                    <label class="block mb-2">Confirm Password *</label>
+                                    <input type="password" class="input-field" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="border-t border-gray-700 pt-6">
+                            <label class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3" required>
+                                <span class="text-sm text-gray-400">
+                                    I agree to the <a href="terms.html" class="text-yellow-500 hover:underline">Terms of Service</a> 
+                                    and <a href="seller-agreement.html" class="text-yellow-500 hover:underline">Seller Agreement</a>, 
+                                    including the $25 CAD/month subscription fee per product and 15% commission on sales.
+                                </span>
+                            </label>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn w-full">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            Register as Seller
+                        </button>
+                    </form>
+
+                    <p class="text-center text-gray-400 mt-6">
+                        Already have an account? 
+                        <button onclick="milloApp.openAuthModal()" class="text-yellow-500 hover:underline">Login here</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Details -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-display gradient-gold text-center mb-12">Transparent Pricing</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="card">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="text-center">
+                            <div class="text-5xl font-bold gradient-gold mb-4">$25 CAD</div>
+                            <p class="text-gray-400 mb-4">Per Product / Month</p>
+                            <ul class="text-left space-y-2">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Unlimited photos</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Product analytics</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Customer messaging</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Marketing tools</li>
+                            </ul>
+                        </div>
+                        <div class="text-center border-l border-gray-700 pl-8">
+                            <div class="text-5xl font-bold gradient-gold mb-4">15%</div>
+                            <p class="text-gray-400 mb-4">Commission on Sales</p>
+                            <ul class="text-left space-y-2">
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Secure payments</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Automatic payouts</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>Transaction protection</li>
+                                <li><i class="fas fa-check text-green-500 mr-2"></i>24/7 support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Millo Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('seller-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            milloApp.showNotification('Registration successful! Check your email for verification.', 'success');
+            setTimeout(() => {
+                window.location.href = 'seller-dashboard.html';
+            }, 2000);
+        });
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9a423568ce9c39fd","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.9.1","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>

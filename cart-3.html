@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Millo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="glass-effect">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-2xl font-display gradient-gold">Millo</a>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="products.html" class="nav-link">Products</a>
+                        <a href="sellers.html" class="nav-link">Become a Seller</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="nav-link relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="py-12">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl font-display gradient-gold mb-8">Shopping Cart</h1>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Cart Items -->
+                <div class="lg:col-span-2">
+                    <div id="cart-items" class="space-y-4">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                    <div id="empty-cart" class="card text-center py-12 hidden">
+                        <i class="fas fa-shopping-cart text-6xl text-gray-600 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Your cart is empty</h3>
+                        <p class="text-gray-400 mb-6">Start shopping to add items to your cart</p>
+                        <a href="products.html" class="btn">
+                            <i class="fas fa-shopping-bag mr-2"></i>
+                            Continue Shopping
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div>
+                    <div class="card">
+                        <h3 class="text-2xl font-bold mb-6">Order Summary</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Subtotal</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Shipping</span>
+                                <span id="shipping">$0.00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-400">Tax (13% HST)</span>
+                                <span id="tax">$0.00</span>
+                            </div>
+                            <div class="border-t border-gray-700 pt-4">
+                                <div class="flex justify-between text-xl font-bold">
+                                    <span>Total</span>
+                                    <span class="gradient-gold" id="total">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="checkout-btn" class="btn w-full" onclick="checkout()">
+                            <i class="fas fa-lock mr-2"></i>
+                            Proceed to Checkout
+                        </button>
+                        <button class="btn btn-secondary w-full mt-2" onclick="milloApp.clearCart()">
+                            <i class="fas fa-trash mr-2"></i>
+                            Clear Cart
+                        </button>
+                    </div>
+
+                    <!-- Promo Code -->
+                    <div class="card mt-4">
+                        <h4 class="font-bold mb-4">Promo Code</h4>
+                        <div class="flex gap-2">
+                            <input type="text" class="input-field" placeholder="Enter code">
+                            <button class="btn btn-compact">Apply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container mx-auto px-6">
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Millo Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function loadCart() {
+            const cartItems = document.getElementById('cart-items');
+            const emptyCart = document.getElementById('empty-cart');
+            const cart = JSON.parse(localStorage.getItem('milloCart')) || [];
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '';
+                emptyCart.classList.remove('hidden');
+                updateTotals(0, 0, 0);
+                return;
+            }
+
+            emptyCart.classList.add('hidden');
+            cartItems.innerHTML = cart.map(item => `
+                <div class="card flex flex-col md:flex-row gap-4">
+                    <img src="https://via.placeholder.com/150x150/1a1a1a/d4af37?text=${encodeURIComponent(item.name)}" 
+                         alt="${item.name}" 
+                         class="w-full md:w-32 h-32 object-cover rounded-lg">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-2">${item.name}</h3>
+                        <p class="text-2xl font-bold text-yellow-500 mb-4">$${item.price.toFixed(2)}</p>
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-2">
+                                <label class="text-sm text-gray-400">Quantity:</label>
+                                <input type="number" 
+                                       value="${item.quantity}" 
+                                       min="1" 
+                                       class="input-field w-20 text-center" 
+                                       onchange="milloApp.updateQuantity(${item.id}, this.value)">
+                            </div>
+                            <button class="btn-danger btn btn-compact" onclick="milloApp.removeFromCart(${item.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-sm text-gray-400">Item Total</p>
+                        <p class="text-xl font-bold">$${(item.price * item.quantity).toFixed(2)}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 100 ? 0 : 15;
+            const tax = subtotal * 0.13;
+            updateTotals(subtotal, shipping, tax);
+        }
+
+        function updateTotals(subtotal, shipping, tax) {
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('shipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
+            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${(subtotal + shipping + tax).toFixed(2)}`;
+        }
+
+        function checkout() {
+            if (milloApp.isLoggedIn()) {
+                window.location.href = 'checkout.html';
+            } else {
+                milloApp.showNotification('Please login to checkout', 'warning');
+                milloApp.openAuthModal();
+            }
+        }
+
+        loadCart();
+    </script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9a42351a0b8139fd","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.9.1","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>

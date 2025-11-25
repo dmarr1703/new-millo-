@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Millo - Premium Marketplace Platform. $25 CAD/month per product + 15% commission on sales.">
+    <meta name="keywords" content="marketplace, ecommerce, online store, seller platform">
+    <title>Millo - Premium Marketplace Platform</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="glass-effect">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-2xl font-display gradient-gold">Millo</a>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="products.html" class="nav-link">Products</a>
+                        <a href="sellers.html" class="nav-link">Become a Seller</a>
+                        <a href="about.html" class="nav-link">About</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="cart.html" class="nav-link relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </a>
+                    <button onclick="openAuthModal()" class="btn btn-compact">Login</button>
+                    <button onclick="openMobileMenu()" class="md:hidden">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <h1 class="text-5xl md:text-7xl font-display gradient-gold mb-6 animate-fadeIn">
+                Welcome to Millo
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 animate-fadeIn" style="animation-delay: 0.2s">
+                Your Premium Marketplace for Exceptional Products
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center animate-fadeIn" style="animation-delay: 0.4s">
+                <a href="products.html" class="btn">
+                    <i class="fas fa-shopping-bag mr-2"></i>
+                    Shop Now
+                </a>
+                <a href="sellers.html" class="btn btn-secondary">
+                    <i class="fas fa-store mr-2"></i>
+                    Start Selling
+                </a>
+            </div>
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="card">
+                    <i class="fas fa-dollar-sign text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">$25 CAD/Month</h3>
+                    <p class="text-gray-400">Per product listing subscription</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-percentage text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">15% Commission</h3>
+                    <p class="text-gray-400">On each successful sale</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-globe text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Global Reach</h3>
+                    <p class="text-gray-400">Sell to customers worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-display gradient-gold text-center mb-12">Featured Products</h2>
+            <div class="product-grid" id="featured-products">
+                <!-- Products will be loaded here by JavaScript -->
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Premium+Watch" alt="Product" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Luxury Watch</h3>
+                    <p class="text-gray-400 mb-4">Premium timepiece with elegant design</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-yellow-500">$599.99</span>
+                        <button class="btn btn-compact" onclick="addToCart(1)">
+                            <i class="fas fa-cart-plus mr-2"></i>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Designer+Bag" alt="Product" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Designer Handbag</h3>
+                    <p class="text-gray-400 mb-4">Handcrafted leather luxury bag</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-yellow-500">$899.99</span>
+                        <button class="btn btn-compact" onclick="addToCart(2)">
+                            <i class="fas fa-cart-plus mr-2"></i>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x300/1a1a1a/d4af37?text=Premium+Headphones" alt="Product" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <h3 class="text-xl font-bold mb-2">Premium Headphones</h3>
+                    <p class="text-gray-400 mb-4">High-fidelity audio experience</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-yellow-500">$349.99</span>
+                        <button class="btn btn-compact" onclick="addToCart(3)">
+                            <i class="fas fa-cart-plus mr-2"></i>Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="products.html" class="btn">
+                    View All Products
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-display gradient-gold text-center mb-12">How It Works</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card text-center">
+                    <div class="text-6xl gradient-gold mb-4">1</div>
+                    <h3 class="text-2xl font-bold mb-4">Register as Seller</h3>
+                    <p class="text-gray-400">Create your seller account and set up your store profile in minutes</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-6xl gradient-gold mb-4">2</div>
+                    <h3 class="text-2xl font-bold mb-4">List Your Products</h3>
+                    <p class="text-gray-400">Add products for $25 CAD/month each with professional listings</p>
+                </div>
+                <div class="card text-center">
+                    <div class="text-6xl gradient-gold mb-4">3</div>
+                    <h3 class="text-2xl font-bold mb-4">Start Selling</h3>
+                    <p class="text-gray-400">Receive orders, ship products, and earn money (15% commission)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-display gradient-gold mb-4">Millo</h3>
+                    <p class="text-gray-400">Your premium marketplace for exceptional products and services.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="products.html" class="text-gray-400 hover:text-yellow-500">Products</a></li>
+                        <li><a href="sellers.html" class="text-gray-400 hover:text-yellow-500">Become a Seller</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-yellow-500">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-yellow-500">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="terms.html" class="text-gray-400 hover:text-yellow-500">Terms of Service</a></li>
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-yellow-500">Privacy Policy</a></li>
+                        <li><a href="seller-agreement.html" class="text-gray-400 hover:text-yellow-500">Seller Agreement</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-facebook-f text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-twitter text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-instagram text-2xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-500"><i class="fab fa-linkedin-in text-2xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Millo Marketplace. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-2xl">&times;</button>
+            <h2 class="text-3xl font-display gradient-gold mb-6">Welcome Back</h2>
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="block mb-2">Email</label>
+                    <input type="email" class="input-field" placeholder="your@email.com" required>
+                </div>
+                <div>
+                    <label class="block mb-2">Password</label>
+                    <input type="password" class="input-field" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn w-full">Login</button>
+                <p class="text-center text-gray-400">
+                    Don't have an account? <a href="sellers.html" class="text-yellow-500 hover:underline">Register as Seller</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9a4234d41af139fd","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.9.1","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>
